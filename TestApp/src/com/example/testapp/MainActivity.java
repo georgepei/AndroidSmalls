@@ -74,5 +74,13 @@ public class MainActivity extends Activity {
     	File file = new File("/sdcard/11.txt");
     	Log.w(TAG, "file.getName: "+file.getName() + " file.getParent(): " + file.getParent());
 
+    	String sdcard0_prefix = System.getenv("EXTERNAL_STORAGE");//"/storage/sdcard0";
+    	Log.w(TAG, "System.getenv(EXTERNAL_STORAGE): "+sdcard0_prefix);
+		String sdcard1_prefix = System.getenv("SECONDARY_STORAGE");//"/storage/sdcard1";
+		Log.w(TAG, "System.getenv(SECONDARY_STORAGE): "+sdcard1_prefix);
+		
+		String text = "String in String";
+		String testString = String.format("%d, %s, %s\n", 100, "hello", text);
+		Log.w(TAG, "fomart %d, %s\n returns: "+ testString);
     }
 }
