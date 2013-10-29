@@ -5,6 +5,7 @@ import java.util.Arrays;
 
 import android.os.Bundle;
 import android.os.Environment;
+import android.os.StatFs;
 import android.app.Activity;
 import android.util.Log;
 import android.view.Menu;
@@ -82,5 +83,15 @@ public class MainActivity extends Activity {
 		String text = "String in String";
 		String testString = String.format("%d, %s, %s\n", 100, "hello", text);
 		Log.w(TAG, "fomart %d, %s\n returns: "+ testString);
+		
+		long size = getDataStorageSizeInKb();
+		Log.w(TAG, "data storage size is: "+size);
     }
+    
+    public long getDataStorageSizeInKb(){
+		StatFs volStatFs = new StatFs(Environment.getDataDirectory().getPath());
+		//we use kb because this value can be very large to be hold in bytes
+		long available_size_in_KB = volStatFs.getAvailableBlocks() * (volStatFs.getBlockSize()/1024);
+		return available_size_in_KB;
+	}
 }
