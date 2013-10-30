@@ -7,9 +7,11 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.os.StatFs;
 import android.app.Activity;
+import android.content.Intent;
 import android.util.Log;
 import android.view.Menu;
 import android.view.View;
+import android.widget.Button;
 
 public class MainActivity extends Activity {
 
@@ -19,6 +21,14 @@ public class MainActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        
+        final Button testDialog = (Button) findViewById(R.id.TestDialog);
+        testDialog.setOnClickListener(new View.OnClickListener() {
+			public void onClick(View v) {
+				Intent intent = new Intent(MainActivity.this, DialogDemo.class);
+				startActivity(intent);
+			}
+        });        
     }
 
 
